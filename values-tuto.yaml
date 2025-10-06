@@ -1,0 +1,52 @@
+image:
+  repository: harbor.formation.cpin.numerique-interieur.com/frmcpin/
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "tuto"
+
+ingress:
+  host: tuto.formation-app.cpin.numerique-interieur.com
+
+# Contrainte de sécurité Openshift
+postgresql:
+  image:
+    repository: bitnamilegacy/postgresql
+  primary:
+    containerSecurityContext:
+      enabled: true
+      privileged: false
+      allowPrivilegeEscalation: false
+      seccompProfile:
+        type: RuntimeDefault
+      capabilities:
+        drop:
+          - ALL
+      runAsNonRoot: true
+    podSecurityContext:
+      enabled: true
+  volumePermissions:
+    enabled: false
+    securityContext:
+      runAsUser: "1001"
+  securityContext:
+    enabled: true
+  shmVolume:
+    chmod:
+      enabled: false
+  containerSecurityContext:
+    enabled: true
+  podSecurityContext:
+    enabled: true
+    volumePermissions:
+      enabled: true
+      securityContext:
+        runAsUser: "1001"
+    securityContext:
+      enabled: true
+    shmVolume:
+      chmod:
+        enabled: false
+    containerSecurityContext:
+      enabled: true
+    podSecurityContext:
+      enabled: true
