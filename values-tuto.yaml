@@ -1,5 +1,5 @@
 image:
-  repository: harbor.formation.cpin.numerique-interieur.com/frmcpin/
+  repository: harbor.formation.cpin.numerique-interieur.com/frmcpin/java-demo
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "tuto"
